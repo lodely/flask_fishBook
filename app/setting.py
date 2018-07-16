@@ -4,4 +4,6 @@
 # 开发环境的一些变量写到此文件
 
 PER_PAGE = 15
-DEBUG = False
+
+BEANS_UPLOAD_ONE_BOOK = 0.5
+RECENT_BOOK_COUNT = 30
