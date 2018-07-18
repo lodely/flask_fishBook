@@ -21,6 +21,7 @@ class Gift(Base):
     # book = relationship('Book')
     # bid = Column(Integer, ForeignKey('book.id'))
 
+<<<<<<< HEAD
     def is_yourself_gift(self, uid):
         return True if self.uid == uid else False
 
@@ -31,6 +32,12 @@ class Gift(Base):
                     Gift.uid==uid, Gift.launched==False,
                     Gift.status!=current_app.config['BOOK_STATUS_DELETE']).order_by(
                 desc(Gift.create_time)).all()
+=======
+    @classmethod
+    def get_user_gifts(cls, uid):
+        gifts = Gift.query.filter_by(uid=uid, launched=False).order_by(
+            desc(Gift.create_time)).all()
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
         return gifts
 
     # 把方法转换为属性

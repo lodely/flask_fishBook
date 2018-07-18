@@ -2,7 +2,11 @@
 # -*- coding: UTF-8 -*-
 import json
 
+<<<<<<< HEAD
 from flask import jsonify, request, render_template, flash, current_app
+=======
+from flask import jsonify, request, render_template, flash
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from flask_login import current_user
 
 from app.forms.book import SearchForm
@@ -59,7 +63,11 @@ def search():
 def book_detail(isbn):
     # 一本书默认不在赠送清单，也不在心愿清单
     has_in_gifts = False
+<<<<<<< HEAD
     has_in_wishes = False
+=======
+    has_in_wishs = False
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 
     # 取书籍的详情数据
     yushu_book = YuShuBook()
@@ -69,6 +77,7 @@ def book_detail(isbn):
     # MVC MVT
     if current_user.is_authenticated:
         if Gift.query.filter_by(uid=current_user.id, isbn=isbn,
+<<<<<<< HEAD
                                launched=False, status=current_app.config['BOOK_STATUS_OK']).first():
             has_in_gifts = True
         if Wish.query.filter_by(uid=current_user.id, isbn=isbn,
@@ -77,6 +86,16 @@ def book_detail(isbn):
 
     trade_gifts = Gift.query.filter_by(isbn=isbn, launched=False, status=current_app.config['BOOK_STATUS_OK']).all()
     trade_wishs = Wish.query.filter_by(isbn=isbn, launched=False, status=current_app.config['BOOK_STATUS_OK']).all()
+=======
+                               launched=False).first():
+            has_in_gifts = True
+        if Wish.query.filter_by(uid=current_user.id, isbn=isbn,
+                               launched=False).first():
+            has_in_wishs = True
+
+    trade_gifts = Gift.query.filter_by(isbn=isbn, launched=False).all()
+    trade_wishs = Wish.query.filter_by(isbn=isbn, launched=False).all()
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
     trad_gift = TradeInfo(trade_gifts)
     trad_wish = TradeInfo(trade_wishs)
 
@@ -85,7 +104,11 @@ def book_detail(isbn):
                            wishes=trad_wish,
                            gifts=trad_gift,
                            has_in_gifts=has_in_gifts,
+<<<<<<< HEAD
                            has_in_wishes=has_in_wishes)
+=======
+                           has_in_wishs=has_in_wishs)
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
     # return render_template('book_detail.html', book=book, wishes=[], gifts=[])
 
 
