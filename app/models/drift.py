@@ -1,9 +1,15 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+<<<<<<< HEAD
 from app.libs.enums import PendingStatus
 from app.models.base import Base
 from sqlalchemy import Column, Integer, String, SmallInteger
 
+=======
+
+from app.models.base import Base
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, desc, func
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 
 class Drift(Base):
     id = Column(Integer, primary_key=True)
@@ -21,6 +27,7 @@ class Drift(Base):
     book_img = Column(String(50))
 
     # 请求者信息
+<<<<<<< HEAD
     requester_id = Column(Integer)
     requester_nickname = Column(String(20))
 
@@ -42,3 +49,6 @@ class Drift(Base):
         # 枚举类型加上.value转换为数字类型
         self._pending = status.value
 
+=======
+    requester_id = Column(Integer)
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d

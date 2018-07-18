@@ -2,12 +2,16 @@
 # -*- coding: UTF-8 -*-
 from flask import flash, url_for, redirect, render_template
 from flask_login import login_required, current_user
+<<<<<<< HEAD
 
 from app.libs.email import send_mail
 from app.libs.enums import PendingStatus
 from app.models.base import db
 from app.models.drift import Drift
 from app.models.gift import Gift
+=======
+from app.models.base import db
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from app.models.wish import Wish
 from app.view_models.trade import MyTrades
 from app.view_models.wish import MyWishes
@@ -43,6 +47,7 @@ def save_to_wish(isbn):
 
 
 @web.route('/satisfy/wish/<int:wid>')
+<<<<<<< HEAD
 @login_required
 def satisfy_wish(wid):
     wish = Wish.query.get_or_404(wid)
@@ -63,3 +68,12 @@ def redraw_from_wish(wid):
     with db.auto_commit():
         wish.delete()
     return redirect(url_for('web.my_wish'))
+=======
+def satisfy_wish(wid):
+    pass
+
+
+@web.route('/wish/book/<isbn>/redraw')
+def redraw_from_wish(isbn):
+    pass
+>>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
