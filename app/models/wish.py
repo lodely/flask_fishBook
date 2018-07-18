@@ -1,9 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-<<<<<<< HEAD
 from flask import current_app
-=======
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from sqlalchemy.orm import relationship
 
 from app.models.base import Base, db
@@ -25,14 +22,9 @@ class Wish(Base):
 
     @classmethod
     def get_user_wishes(cls, uid):
-<<<<<<< HEAD
         wishes = Wish.query.filter_by(uid=uid, launched=False,
                                       status=current_app.config['BOOK_STATUS_OK']).order_by(
                                 desc(Wish.create_time)).all()
-=======
-        wishes = Wish.query.filter_by(uid=uid, launched=False).order_by(
-            desc(Wish.create_time)).all()
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
         return wishes
 
     @classmethod

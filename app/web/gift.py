@@ -2,13 +2,9 @@
 # -*- coding: UTF-8 -*-
 from flask import flash, current_app, url_for, redirect, render_template
 
-<<<<<<< HEAD
 from app.libs.enums import PendingStatus
 from app.models.base import db
 from app.models.drift import Drift
-=======
-from app.models.base import db
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from app.models.gift import Gift
 from app.view_models.gift import MyGifts
 from app.view_models.trade import MyTrades
@@ -21,17 +17,11 @@ from flask_login import login_required, current_user
 def my_gifts():
     uid = current_user.id
     gifts_of_mine = Gift.get_user_gifts(uid)
-<<<<<<< HEAD
 
     # 赠送清单的书名列表
     isbn_list = [gift.isbn for gift in gifts_of_mine]
     wish_count_list = Gift.get_wish_counts(isbn_list)
 
-=======
-    isbn_list = [gift.isbn for gift in gifts_of_mine]
-
-    wish_count_list = Gift.get_wish_counts(isbn_list)
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
     view_model = MyTrades(gifts_of_mine, wish_count_list)
     return render_template('my_gifts.html', gifts=view_model.trades)
 
@@ -53,7 +43,6 @@ def save_to_gifts(isbn):
     return redirect(url_for('web.book_detail', isbn=isbn))
 
 
-<<<<<<< HEAD
 @web.route('/gifts/<gid>/redraw')
 @login_required
 def redraw_from_gifts(gid):
@@ -71,12 +60,6 @@ def redraw_from_gifts(gid):
             current_user.beans -= current_app.config['BEANS_UPLOAD_ONE_BOOK']
             gift.delete()
     return redirect(url_for('web.my_gifts'))
-=======
-
-@web.route('/gifts/<gid>/redraw')
-def redraw_from_gifts(gid):
-    pass
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 
 # 测试
 @web.route('/mygift/test')

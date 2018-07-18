@@ -1,27 +1,18 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-<<<<<<< HEAD
 from math import floor
-=======
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 
 from app import login_manager
-<<<<<<< HEAD
 from app.libs.enums import PendingStatus
-=======
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from app.libs.helper import is_isbn_or_key
 from app.models.base import Base, db
 from sqlalchemy import Column, Integer, String, Boolean, Float
 from flask_login import UserMixin
 
-<<<<<<< HEAD
 from app.models.drift import Drift
-=======
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 from app.models.gift import Gift
 from app.models.wish import Wish
 from app.spider.yushu_book import YuShuBook
@@ -66,7 +57,6 @@ class User(UserMixin, Base):
         # 书既不在赠送清单，也不在心愿清单才能添加
         gifting = Gift.query.filter_by(uid=self.id, isbn=isbn,
                                        launched=False).first()
-<<<<<<< HEAD
         if gifting:
             temp = Gift.query.filter_by(uid=self.id, isbn=isbn,
                                        launched=False, status=current_app.config['BOOK_STATUS_DELETE']).first()
@@ -81,10 +71,6 @@ class User(UserMixin, Base):
             if temp:
                 wising = False
 
-=======
-        wising = Wish.query.filter_by(uid=self.id, isbn=isbn,
-                                      launched=False).first()
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
         if not gifting and not wising:
             return True
         else:
@@ -110,7 +96,6 @@ class User(UserMixin, Base):
             user.password = new_password
         return True
 
-<<<<<<< HEAD
     def can_send_drift(self):
         if self.beans < 1:
             return False
@@ -133,8 +118,6 @@ class User(UserMixin, Base):
             send_receive=str(self.send_counter) + '/' + str(self.receive_counter)
         )
 
-=======
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
 @login_manager.user_loader
 def get_user(uid):
     return User.query.get(int(uid))

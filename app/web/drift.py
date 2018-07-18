@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-<<<<<<< HEAD
 from flask import flash, redirect, url_for, render_template, request
 from flask_login import login_required, current_user
 
@@ -130,32 +129,3 @@ def save_drift(drift_form, current_gift):
         current_user.beans -= 1
 
         db.session.add(drift)
-=======
-from . import web
-
-
-
-@web.route('/drift/<int:gid>', methods=['GET', 'POST'])
-def send_drift(gid):
-    pass
-
-
-@web.route('/pending')
-def pending():
-    pass
-
-
-@web.route('/drift/<int:did>/reject')
-def reject_drift(did):
-    pass
-
-
-@web.route('/drift/<int:did>/redraw')
-def redraw_drift(did):
-    pass
-
-
-@web.route('/drift/<int:did>/mailed')
-def mailed_drift(did):
-    pass
->>>>>>> 051091b01b3d415ec55f23bd22026d22bbedd24d
