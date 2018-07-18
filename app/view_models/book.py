@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-class BookViewModel:
+class _BookViewModel:
+
     # 处理单本数据
     @classmethod
     def package_single(cls, data, keyword):
@@ -73,3 +74,36 @@ class BookViewModel:
             }
             books.append(r)
         return books
+
+# 重构BookViewModel类，使用面向对象的思想，放弃上面使用面向过程的思想
+class BookViewModel:
+    def __init__(self, book):
+        self.title = book['title']
+        self.publisher =  book['publisher']
+        self.pages = book['pages']
+        self.author = '、'.join(book['author'])
+        self.price = book['price']
+        self.summary = book['summary']
+        self.image = book['image']
+        self.isbn = book['isbn']
+        self.pubdate = book['pubdate']
+        self.binding = book['binding']
+
+    # 添加property装饰器，可以使用属性的方式调用函数
+    @property
+    def intro(self):
+        intros = filter(lambda x: True if x else False,
+                        [self.author, self.publisher, self.price])
+        return ' / '.join(intros)
+
+class BookCollection:
+    def __init__(self):
+        self.total = 0
+        self.books = []
+        self.keyword = ''
+
+    def fill(self, yushu_book, keyword):
+        self.total = yushu_book.total
+        self.keyword = keyword
+        self.books = [BookViewModel(book) for book in yushu_book.books]
+

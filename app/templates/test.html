@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {{ super() }}
+    {{ data.age }}
+    {{ data['age'] }}
+    {% if data.age < 18 %}
+        {{ data.name }}
+        {% set messages = get_flashed_messages() %}
+        {{ messages }}
+        
+    {% endif %}
+{% endblock %}
