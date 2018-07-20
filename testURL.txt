@@ -1,8 +1,0 @@
-测试URL
-http://127.0.0.1:5000/book/search?q=9787539123639&page=1
-
-http://127.0.0.1:5000/book/search?q=9787539123639
-
-http://127.0.0.1:5000/book/search?q=9787070511209
-
-http://127.0.0.1:5000/book/search?q=红楼梦
