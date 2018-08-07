@@ -18,8 +18,8 @@ class Gift(Base):
     user = relationship('User')
     uid = Column(Integer, ForeignKey('user.id'))
     isbn = Column(String(15), nullable = False)
-    # book = relationship('Book')
-    # bid = Column(Integer, ForeignKey('book.id'))
+    book = relationship('Book')
+    bid = Column(Integer, ForeignKey('book.id'))
 
     def is_yourself_gift(self, uid):
         return True if self.uid == uid else False
